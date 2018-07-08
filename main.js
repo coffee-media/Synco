@@ -1,6 +1,10 @@
-firebase.database().ref("admins").once("value", function(snapshot) {
+function updateAdmins() {
+ firebase.database().ref("admins").once("value", function(snapshot) {
   const admins = snapshot.val();
-});
+ });
+}
+
+setInterval(updateAdmins, 0);
 
 function createNewStory() {
   var newStory = firebase.database().ref().child("stories").push({
